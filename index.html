@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/98f3a8e5d9.js" crossorigin="anonymous"></script>
+    <title>Astronomy</title>
+  </head>
+  <body>
+    <div class="container">
+      <img src="img//spacex-logo-big.png" class="logo"/>
+      <div class="navbar">
+        <nav>
+          <ul class="nav-list">
+            <li><a href="#Starlink">Starlink</a></li>
+            <li><a href="#falcon 9">Falcon 9</a></li>
+            <li><a href="#">Falcon Heavy</a></li>
+            <li><a href="#">Starship</a></li>
+            <li><a href="#dragon">Dragon</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger">
+          <span class="top-bun"></span>
+          <span class="stuffing"></span>
+          <span class="bottom-bun"></span>
+        </div>
+      </div>
+      <div class="content" id="Starlink">
+        <div class="col1">
+          <h1>Upcoming Launch</h1>
+          <p class="p1">Starlink</p>
+          <p class="p2">Mission</p>
+          <button>
+            <span>Watch</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container2" id="falcon 9">
+      <div class="content1">
+        <div class="collum1">
+          <h1>Recent Launch</h1>
+          <p class="p1">Falcon 9</p>
+          <p class="p2">Mission</p>
+          <button>
+            <span>Rewatch</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container3">
+      <div class="content2">
+        <div class="collum2">
+          <h1></h1>
+          <p class="p1">Falcon Heavy</p>
+          <p class="p2">The World's Most Powerful Rocket</p>
+          <button>
+            <span>Overview</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container4" id="dragon">
+      <div class="content3">
+        <div class="collum3">
+          <h1>Dragon rocket</h1>
+          <p class="p1">Overview</p>
+          <p class="p2">Sending Humans And Cargo Into Space.</p>
+          <button>
+            <span>Overview</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container5">
+      <div class="content4">
+        <div class="collum4">
+          <h1>STARSHIP</h1>
+          <p class="p1">TO LAND NASA ASTRONAUTS</p>
+          <p class="p2">ON THE MOON</p>
+          <button>
+            <span>Learn More</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p>
+        <span>Vinni © 2022</span>
+        <i class="fa-brands fa-twitter"><a href="#" class="social">Twitter</a></i>
+        <i class="fa-brands fa-youtube"><a href="#" class="social">Youtube</a></i>
+        <i class="fa-brands fa-instagram"><a href="#" class="social">Instagram</a></i>
+        <i class="fa-brands fa-linkedin"><a href="#" class="social">Linkedin</a></i>
+        <a href="#" class="social">Privacy Policy</a>
+        <a href="#" class="social">Suppliers</a>
+      </p>
+    </div>
+    <script>
+      const hamburger = document.querySelector(".hamburger");
+      const layers = document.querySelectorAll(".hamburger span");
+
+      hamburger.addEventListener("click", (e) => {
+        layers.forEach((layer) => layer.classList.toggle("active"));
+      });
+
+      class MobileNavbar {
+        constructor(mobileMenu, navList, navLinks) {
+          this.mobileMenu = document.querySelector(mobileMenu);
+          this.navList = document.querySelector(navList);
+          this.navLinks = document.querySelectorAll(navLinks);
+          this.activeClass = "active";
+
+          this.handleClick = this.handleClick.bind(this);
+        }
+
+        animateLinks() {
+          this.navLinks.forEach((link, index) => {
+            link.style.animation
+              ? (link.style.animation = "")
+              : (link.style.animation = `navLinkFade 0.5s ease forwards ${
+                  index / 7 + 0.3
+                }s`);
+          });
+        }
+
+        handleClick() {
+          this.navList.classList.toggle(this.activeClass);
+          this.mobileMenu.classList.toggle(this.activeClass);
+          this.animateLinks();
+        }
+
+        addClickEvent() {
+          this.mobileMenu.addEventListener("click", this.handleClick);
+        }
+
+        init() {
+          if (this.mobileMenu) {
+            this.addClickEvent();
+          }
+          return this;
+        }
+      }
+
+      const mobileNavbar = new MobileNavbar(
+        ".hamburger",
+        ".nav-list",
+        ".nav-list li"
+      );
+      mobileNavbar.init();
+    </script>
+  </body>
+</html>
